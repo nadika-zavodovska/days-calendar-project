@@ -5,7 +5,9 @@
 
 import { getGreeting } from "./common.mjs";
 import daysData from "./days.json" with { type: "json" };
+import { generateParentContainers } from "./generate-ui/generate-parent-containers.js";
 
 window.onload = function() {
+    generateParentContainers();
     document.querySelector("body").innerText = `${getGreeting()} - there are ${daysData.length} known days`;
 }
