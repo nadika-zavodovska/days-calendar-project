@@ -9,5 +9,5 @@ import { generateParentContainers } from "./generate-ui/generate-parent-containe
 
 window.onload = function() {
     generateParentContainers();
-    document.querySelector("body").innerText = `${getGreeting()} - there are ${daysData.length} known days`;
+    // document.querySelector("body").innerText = `${getGreeting()} - there are ${daysData.length} known days`;
 }
