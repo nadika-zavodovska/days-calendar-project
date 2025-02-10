@@ -16,7 +16,11 @@ export function generateUiMainContainer() {
 
     const footerContainer = document.createElement("footer");
     footerContainer.id = "footer-container";
-    document.body.appendChild(footerContainer);    
+    document.body.appendChild(footerContainer);  
+
+    const selectDateSection = document.createElement("section");
+    selectDateSection.id = "select-date-section";
+    mainContainer.appendChild(selectDateSection);  
 
     const navSection = document.createElement("section");
     navSection.id = "nav-section";
@@ -28,20 +32,17 @@ export function generateUiMainContainer() {
     prevMonthBtn.innerText = "Back";
     prevMonthBtn.addEventListener("click", () => changeMonth(-1));
 
+    const currentDate = document.createElement("div");
+    currentDate.id = "current-date";
+    navSection.appendChild(currentDate); 
+
     const nextMonthBtn = document.createElement("button");
     nextMonthBtn.id = "next-month";
     navSection.appendChild(nextMonthBtn);
     nextMonthBtn.innerText = "Next";
     nextMonthBtn.addEventListener("click", () => changeMonth(1));
 
-    const currentDate = document.createElement("div");
-    currentDate.id = "current-date";
-    navSection.appendChild(currentDate);
-    // currentDate.innerText = "10 February 2025";  
-    
-    const selectDateSection = document.createElement("section");
-    selectDateSection.id = "select-date-section";
-    mainContainer.appendChild(selectDateSection);
+       
 
     const monthLabel = document.createElement('label');
     monthLabel.innerText = 'Month:';
