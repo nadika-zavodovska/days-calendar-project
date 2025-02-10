@@ -12,8 +12,8 @@ import { generateUiMainContainer } from "./generate-ui/generate-ui-main-containe
 let currentYear = new Date().getFullYear() // get full year
 let currentMonth = new Date().getMonth() // get current month
 
-function generateCalendar() {
-    const calendar = document.getElementById("calendar");
+export function generateCalendar() {
+    
     const calendarTitle = document.getElementById("current-date");
     const daysOfTheWeek =  ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -56,7 +56,7 @@ function generateCalendar() {
 }
 
 // Function to handle month navigation (forward or backward)
-function changeMonth(direction) {
+export function changeMonth(direction) {
   currentMonth += direction;
 
   // Adjust if the month goes out of range

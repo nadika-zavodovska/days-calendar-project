@@ -1,3 +1,5 @@
+import { changeMonth } from "../web.mjs"
+
 export function generateUiMainContainer() {
     const headerContainer = document.createElement("header");
     headerContainer.id = "header-container";
@@ -24,11 +26,13 @@ export function generateUiMainContainer() {
     prevMonthBtn.id = "prev-month";
     navSection.appendChild(prevMonthBtn);
     prevMonthBtn.innerText = "Back";
+    prevMonthBtn.addEventListener("click", () => changeMonth(-1));
 
     const nextMonthBtn = document.createElement("button");
     nextMonthBtn.id = "next-month";
     navSection.appendChild(nextMonthBtn);
     nextMonthBtn.innerText = "Next";
+    nextMonthBtn.addEventListener("click", () => changeMonth(1));
 
     const currentDate = document.createElement("div");
     currentDate.id = "current-date";
