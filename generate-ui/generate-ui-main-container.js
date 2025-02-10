@@ -6,8 +6,8 @@ export function generateUiMainContainer() {
     const pageTitle = document.createElement("h1");
     pageTitle.id = "page-title";
     pageTitle.innerText = "Calendar with commemorative days";
-    headerContainer.appendChild(pageTitle);    
-
+    headerContainer.appendChild(pageTitle);
+    
     const mainContainer = document.createElement("main");
     mainContainer.id = "main-container";
     document.body.appendChild(mainContainer);
@@ -16,23 +16,23 @@ export function generateUiMainContainer() {
     footerContainer.id = "footer-container";
     document.body.appendChild(footerContainer);    
 
-    const backNextBtnSection = document.createElement("section");
-    backNextBtnSection.id = "back-next-btn-section";
-    mainContainer.appendChild(backNextBtnSection);
+    const navSection = document.createElement("section");
+    navSection.id = "nav-section";
+    mainContainer.appendChild(navSection);
 
     const prevMonthBtn = document.createElement("button");
     prevMonthBtn.id = "prev-month";
-    backNextBtnSection.appendChild(prevMonthBtn);
+    navSection.appendChild(prevMonthBtn);
     prevMonthBtn.innerText = "Back";
 
     const nextMonthBtn = document.createElement("button");
     nextMonthBtn.id = "next-month";
-    backNextBtnSection.appendChild(nextMonthBtn);
+    navSection.appendChild(nextMonthBtn);
     nextMonthBtn.innerText = "Next";
 
-    const currentDate = document.createElement("section");
+    const currentDate = document.createElement("div");
     currentDate.id = "current-date";
-    mainContainer.appendChild(currentDate);
+    navSection.appendChild(currentDate);
     currentDate.innerText = "10 February 2025";    
 
     const selectDateSection = document.createElement("section");
