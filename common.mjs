@@ -1,17 +1,17 @@
 // This is a placeholder file which shows how you can define functions which can be used from both a browser script and a node script. You can delete the contents of the file once you have understood how it works.
 
-export function getGreeting() {
-    return "Hello";
-}
+// export function getGreeting() {
+//     return "Hello";
+// }
 
 //steps 
 // fetch data from days
 // display data on page to make sure they working 
 
 
-// 1 . Create an HTML page which, when loaded, displays a calendar.
+// 1 . Create an HTML page which, when loaded, displays a calendar. Done
 
-// 2. The calendar must show every day of the current month, each as a rectangle. 
+// 2. The calendar must show every day of the current month, each as a rectangle. Done
 // Each row of rectangles must show one week. The first column must show Mondays. 
 // The first day of the month must be shown in the first row.
 
