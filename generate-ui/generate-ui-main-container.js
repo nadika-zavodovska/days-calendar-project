@@ -40,9 +40,7 @@ export function generateUiMainContainer() {
     nextMonthBtn.id = "next-month";
     navSection.appendChild(nextMonthBtn);
     nextMonthBtn.innerText = "Next";
-    nextMonthBtn.addEventListener("click", () => changeMonth(1));
-
-       
+    nextMonthBtn.addEventListener("click", () => changeMonth(1));       
 
     const monthLabel = document.createElement('label');
     monthLabel.innerText = 'Month:';
@@ -82,4 +80,21 @@ export function generateUiMainContainer() {
     const calendarContainer = document.createElement("section");
     calendarContainer.id = "calendar-container";
     mainContainer.appendChild(calendarContainer);
+
+    const commemDayDetailsSection = document.createElement("section");
+    commemDayDetailsSection.id = "commem-day-details-section";    
+    mainContainer.appendChild(commemDayDetailsSection);
+    const commemDayDetailsContainer = document.getElementById("commem-day-details-section");
+
+    const titleCommemDayDetailsSection = document.createElement("h2");
+    titleCommemDayDetailsSection.id = "title-commem-day-details";
+    titleCommemDayDetailsSection.innerText = "Ada Lovelace Day";
+    commemDayDetailsSection.appendChild(titleCommemDayDetailsSection);
+
+    const linkCommemDayDetails = document.createElement("a");
+    linkCommemDayDetails.id = "link-commem-day-details";
+    linkCommemDayDetails.href = "https://codeyourfuture.github.io/The-Piscine/days/vultures.txt";
+    linkCommemDayDetails.target = "_blank";
+    linkCommemDayDetails.innerText = "More details";
+    commemDayDetailsSection.appendChild(linkCommemDayDetails);
 }
