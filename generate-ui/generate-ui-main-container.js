@@ -33,8 +33,8 @@ export function generateUiMainContainer() {
     const currentDate = document.createElement("div");
     currentDate.id = "current-date";
     navSection.appendChild(currentDate);
-    currentDate.innerText = "10 February 2025";    
-
+    // currentDate.innerText = "10 February 2025";  
+    
     const selectDateSection = document.createElement("section");
     selectDateSection.id = "select-date-section";
     mainContainer.appendChild(selectDateSection);

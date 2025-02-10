@@ -14,7 +14,7 @@ let currentMonth = new Date().getMonth() // get current month
 
 function generateCalendar() {
     const calendar = document.getElementById("calendar");
-    const calendarTitle =  document.getElementById("title");
+    const calendarTitle = document.getElementById("current-date");
     const daysOfTheWeek =  ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     // clear existing calendar
