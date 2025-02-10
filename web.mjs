@@ -8,6 +8,6 @@ import daysData from "./days.json" with { type: "json" };
 import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.js";
 
 window.onload = function() {
-    generateUiMainContainer();
+    generateUiMainContainer();   
     // document.querySelector("body").innerText = `${getGreeting()} - there are ${daysData.length} known days`;
 }
