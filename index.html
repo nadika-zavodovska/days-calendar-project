@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <script type="module" src="common.mjs"></script>
-        <script type="module" src="web.mjs"></script>
-    </head>
-    <body>
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Days Calendar</title>
+  <script src="web.mjs"></script> 
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="calendar-container">
+    <h1>Days Calendar</h1>
+    <h2 id="title"></h2>
+    <div class="nav-buttons">
+      <button onclick="changeMonth(-1)">Previous Month</button>
+      <button onclick="changeMonth(1)">Next Month</button>
+    </div>
+    <div class="calendar" id="calendar"></div>
+  </div>
+
+ 
+</body>
 </html>
