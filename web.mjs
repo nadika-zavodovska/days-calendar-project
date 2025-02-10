@@ -15,16 +15,25 @@ let currentMonth = new Date().getMonth() // get current month
 export function generateCalendar() {
     
     const calendarTitle = document.getElementById("current-date");
-    const daysOfTheWeek =  ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     const calendarBlock = document.getElementById("calendar-container");
+    
+    if (!calendarBlock) {
+        console.error("Calendar container not found!");
+        return;
+    }
+
     // clear existing calendar
     calendarBlock.innerHTML = '';
 
     const months = ["January", "February", "March", "April", "May", "June", 
                 "July", "August", "September", "October", "November", "December"];
 
-    calendarTitle.textContent =  `${months[currentMonth]} ${currentYear}`;
+    if (calendarTitle) {
+        calendarTitle.textContent = `${months[currentMonth]} ${currentYear}`;
+    }
+
+    const daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];     
 
    // Generate header (days of the week)
     daysOfTheWeek.forEach(day => {
@@ -56,6 +65,13 @@ export function generateCalendar() {
   }
 }
 
+// Update selected month and year
+export function setDate(selectedMonth, selectedYear) {
+    currentMonth = selectedMonth;
+    currentYear = selectedYear;
+    generateCalendar();
+}
+
 // Function to handle month navigation (forward or backward)
 export function changeMonth(direction) {
   currentMonth += direction;
@@ -71,7 +87,7 @@ export function changeMonth(direction) {
 
   generateCalendar();
 }
-window.changeMonth = changeMonth;
+// window.changeMonth = changeMonth;
 window.onload = function () {
     generateUiMainContainer();
     generateCalendar();
