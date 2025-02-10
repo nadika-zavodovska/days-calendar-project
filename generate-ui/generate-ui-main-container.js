@@ -29,7 +29,7 @@ export function generateUiMainContainer() {
     const prevMonthBtn = document.createElement("button");
     prevMonthBtn.id = "prev-month";
     navSection.appendChild(prevMonthBtn);
-    prevMonthBtn.innerText = "Back";
+    prevMonthBtn.innerText = "Previous month";
     prevMonthBtn.addEventListener("click", () => changeMonth(-1));
 
     const currentDate = document.createElement("div");
@@ -39,7 +39,7 @@ export function generateUiMainContainer() {
     const nextMonthBtn = document.createElement("button");
     nextMonthBtn.id = "next-month";
     navSection.appendChild(nextMonthBtn);
-    nextMonthBtn.innerText = "Next";
+    nextMonthBtn.innerText = "Next month";
     nextMonthBtn.addEventListener("click", () => changeMonth(1));       
 
     const monthLabel = document.createElement('label');
