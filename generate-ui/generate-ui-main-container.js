@@ -3,6 +3,11 @@ export function generateUiMainContainer() {
     headerContainer.id = "header-container";
     document.body.appendChild(headerContainer);
 
+    const title = document.createElement("h1");
+    title.id = "page-title";
+    title.innerText = "Calendar with commemorative days";
+    headerContainer.appendChild(title);
+
     const mainContainer = document.createElement("main");
     mainContainer.id = "main-container";
     document.body.appendChild(mainContainer);
