@@ -76,5 +76,9 @@ export function generateUiMainContainer() {
     const submitBtn = document.createElement('button');
     submitBtn.id = 'submit-btn';
     submitBtn.innerText = 'Submit';
-    selectDateSection.appendChild(submitBtn)
+    selectDateSection.appendChild(submitBtn);
+
+    const calendarContainer = document.createElement("section");
+    calendarContainer.id = "calendar-container";
+    mainContainer.appendChild(calendarContainer);
 }

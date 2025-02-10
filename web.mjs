@@ -17,8 +17,9 @@ export function generateCalendar() {
     const calendarTitle = document.getElementById("current-date");
     const daysOfTheWeek =  ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+    const calendarBlock = document.getElementById("calendar-container");
     // clear existing calendar
-    calendar.innerHTML = '';
+    calendarBlock.innerHTML = '';
 
     const months = ["January", "February", "March", "April", "May", "June", 
                 "July", "August", "September", "October", "November", "December"];
@@ -30,7 +31,7 @@ export function generateCalendar() {
         const dayElement = document.createElement("div");
         dayElement.textContent = day;
         dayElement.classList.add("header");
-        calendar.appendChild(dayElement);
+        calendarBlock.appendChild(dayElement);
     })
 
     // Get the first day of the month (0 = Sunday, 1 = Monday, etc.)
@@ -43,7 +44,7 @@ export function generateCalendar() {
   // Add empty slots for days before the first day of the month
   for (let i = 0; i < adjustedFirstDay; i++) {
     const emptySlot = document.createElement("div");
-    calendar.appendChild(emptySlot);
+      calendarBlock.appendChild(emptySlot);
   }
 
   // Generate the days of the month
@@ -51,7 +52,7 @@ export function generateCalendar() {
     const dayElement = document.createElement("div");
     dayElement.textContent = i;  // Dummy date
     dayElement.classList.add("day");
-    calendar.appendChild(dayElement);
+    calendarBlock.appendChild(dayElement);
   }
 }
 
