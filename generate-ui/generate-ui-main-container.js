@@ -1,38 +1,46 @@
+import { changeMonth } from "../web.mjs"
+
 export function generateUiMainContainer() {
     const headerContainer = document.createElement("header");
     headerContainer.id = "header-container";
     document.body.appendChild(headerContainer);
 
+    const pageTitle = document.createElement("h1");
+    pageTitle.id = "page-title";
+    pageTitle.innerText = "Calendar with commemorative days";
+    headerContainer.appendChild(pageTitle);
+    
     const mainContainer = document.createElement("main");
     mainContainer.id = "main-container";
     document.body.appendChild(mainContainer);
 
     const footerContainer = document.createElement("footer");
     footerContainer.id = "footer-container";
-    document.body.appendChild(footerContainer);    
-
-    const backNextBtnSection = document.createElement("section");
-    backNextBtnSection.id = "back-next-btn-section";
-    mainContainer.appendChild(backNextBtnSection);
-
-    const prevMonthBtn = document.createElement("button");
-    prevMonthBtn.id = "prev-month";
-    backNextBtnSection.appendChild(prevMonthBtn);
-    prevMonthBtn.innerText = "Back";
-
-    const nextMonthBtn = document.createElement("button");
-    nextMonthBtn.id = "next-month";
-    backNextBtnSection.appendChild(nextMonthBtn);
-    nextMonthBtn.innerText = "Next";
-
-    const currentDate = document.createElement("section");
-    currentDate.id = "current-date";
-    mainContainer.appendChild(currentDate);
-    currentDate.innerText = "10 February 2025";    
+    document.body.appendChild(footerContainer);  
 
     const selectDateSection = document.createElement("section");
     selectDateSection.id = "select-date-section";
-    mainContainer.appendChild(selectDateSection);
+    mainContainer.appendChild(selectDateSection);  
+
+    const navSection = document.createElement("section");
+    navSection.id = "nav-section";
+    mainContainer.appendChild(navSection);
+
+    const prevMonthBtn = document.createElement("button");
+    prevMonthBtn.id = "prev-month";
+    navSection.appendChild(prevMonthBtn);
+    prevMonthBtn.innerText = "Previous month";
+    prevMonthBtn.addEventListener("click", () => changeMonth(-1));
+
+    const currentDate = document.createElement("div");
+    currentDate.id = "current-date";
+    navSection.appendChild(currentDate); 
+
+    const nextMonthBtn = document.createElement("button");
+    nextMonthBtn.id = "next-month";
+    navSection.appendChild(nextMonthBtn);
+    nextMonthBtn.innerText = "Next month";
+    nextMonthBtn.addEventListener("click", () => changeMonth(1));       
 
     const monthLabel = document.createElement('label');
     monthLabel.innerText = 'Month:';
@@ -67,5 +75,26 @@ export function generateUiMainContainer() {
     const submitBtn = document.createElement('button');
     submitBtn.id = 'submit-btn';
     submitBtn.innerText = 'Submit';
-    selectDateSection.appendChild(submitBtn)
+    selectDateSection.appendChild(submitBtn);
+
+    const calendarContainer = document.createElement("section");
+    calendarContainer.id = "calendar-container";
+    mainContainer.appendChild(calendarContainer);
+
+    const commemDayDetailsSection = document.createElement("section");
+    commemDayDetailsSection.id = "commem-day-details-section";    
+    mainContainer.appendChild(commemDayDetailsSection);
+    const commemDayDetailsContainer = document.getElementById("commem-day-details-section");
+
+    const titleCommemDayDetailsSection = document.createElement("h2");
+    titleCommemDayDetailsSection.id = "title-commem-day-details";
+    titleCommemDayDetailsSection.innerText = "Ada Lovelace Day";
+    commemDayDetailsSection.appendChild(titleCommemDayDetailsSection);
+
+    const linkCommemDayDetails = document.createElement("a");
+    linkCommemDayDetails.id = "link-commem-day-details";
+    linkCommemDayDetails.href = "https://codeyourfuture.github.io/The-Piscine/days/vultures.txt";
+    linkCommemDayDetails.target = "_blank";
+    linkCommemDayDetails.innerText = "More details";
+    commemDayDetailsSection.appendChild(linkCommemDayDetails);
 }

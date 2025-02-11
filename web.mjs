@@ -12,13 +12,14 @@ import { generateUiMainContainer } from "./generate-ui/generate-ui-main-containe
 let currentYear = new Date().getFullYear() // get full year
 let currentMonth = new Date().getMonth() // get current month
 
-function generateCalendar() {
-    const calendar = document.getElementById("calendar");
-    const calendarTitle =  document.getElementById("title");
+export function generateCalendar() {
+    
+    const calendarTitle = document.getElementById("current-date");
     const daysOfTheWeek =  ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+    const calendarBlock = document.getElementById("calendar-container");
     // clear existing calendar
-    calendar.innerHTML = '';
+    calendarBlock.innerHTML = '';
 
     const months = ["January", "February", "March", "April", "May", "June", 
                 "July", "August", "September", "October", "November", "December"];
@@ -30,7 +31,7 @@ function generateCalendar() {
         const dayElement = document.createElement("div");
         dayElement.textContent = day;
         dayElement.classList.add("header");
-        calendar.appendChild(dayElement);
+        calendarBlock.appendChild(dayElement);
     })
 
     // Get the first day of the month (0 = Sunday, 1 = Monday, etc.)
@@ -43,7 +44,7 @@ function generateCalendar() {
   // Add empty slots for days before the first day of the month
   for (let i = 0; i < adjustedFirstDay; i++) {
     const emptySlot = document.createElement("div");
-    calendar.appendChild(emptySlot);
+      calendarBlock.appendChild(emptySlot);
   }
 
   // Generate the days of the month
@@ -51,12 +52,12 @@ function generateCalendar() {
     const dayElement = document.createElement("div");
     dayElement.textContent = i;  // Dummy date
     dayElement.classList.add("day");
-    calendar.appendChild(dayElement);
+    calendarBlock.appendChild(dayElement);
   }
 }
 
 // Function to handle month navigation (forward or backward)
-function changeMonth(direction) {
+export function changeMonth(direction) {
   currentMonth += direction;
 
   // Adjust if the month goes out of range
