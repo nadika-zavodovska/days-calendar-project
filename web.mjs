@@ -6,7 +6,7 @@
 
 // import { getGreeting } from "./common.mjs";
 // import daysData from "./days.json" with { type: "json" };
-import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.js";
+import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.mjs";
 
 
 let currentYear = new Date().getFullYear() // get full year
