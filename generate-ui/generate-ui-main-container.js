@@ -1,4 +1,4 @@
-import { changeMonth } from "../web.mjs"
+import { changeMonth, setDate } from "../web.mjs"
 
 export function generateUiMainContainer() {
     const headerContainer = document.createElement("header");
@@ -40,7 +40,7 @@ export function generateUiMainContainer() {
     nextMonthBtn.id = "next-month";
     navSection.appendChild(nextMonthBtn);
     nextMonthBtn.innerText = "Next month";
-    nextMonthBtn.addEventListener("click", () => changeMonth(1));       
+    nextMonthBtn.addEventListener("click", () => changeMonth(1));           
 
     const monthLabel = document.createElement('label');
     monthLabel.innerText = 'Month:';
@@ -50,7 +50,6 @@ export function generateUiMainContainer() {
     selectDateSection.appendChild(monthLabel);
     selectDateSection.appendChild(monthsCreateSelect);
 
-    const monthSelect = document.getElementById("months-select");
     const months = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -60,7 +59,7 @@ export function generateUiMainContainer() {
         let option = document.createElement("option");
         option.value = index;
         option.textContent = month;
-        monthSelect.appendChild(option);
+        monthsCreateSelect.appendChild(option);
     });
 
     const yearLabel = document.createElement("label");
@@ -76,6 +75,17 @@ export function generateUiMainContainer() {
     submitBtn.id = 'submit-btn';
     submitBtn.innerText = 'Submit';
     selectDateSection.appendChild(submitBtn);
+
+    submitBtn.addEventListener("click", () => {
+        const selectedMonth = parseInt(monthsCreateSelect.value);
+        const selectedYear = parseInt(yearInput.value);
+
+        if (!isNaN(selectedMonth) && !isNaN(selectedYear)) {
+            setDate(selectedMonth, selectedYear);
+        } else {
+            alert("Please enter a valid month and year.");
+        }
+    });
 
     const calendarContainer = document.createElement("section");
     calendarContainer.id = "calendar-container";
