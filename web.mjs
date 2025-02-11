@@ -4,15 +4,10 @@
 // You can't open the index.html file using a file:// URL.
 
 
-import { getGreeting } from "./common.mjs";
-import daysData from "./days.json" with { type: "json" };
+// import { getGreeting } from "./common.mjs";
+// import daysData from "./days.json" with { type: "json" };
 import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.js";
 
-window.onload = function() {
-    generateUiMainContainer();   
-    // document.querySelector("body").innerText = `${getGreeting()} - there are ${daysData.length} known days`;
-
-}
 
 let currentYear = new Date().getFullYear() // get full year
 let currentMonth = new Date().getMonth() // get current month
@@ -75,6 +70,8 @@ function changeMonth(direction) {
 
   generateCalendar();
 }
-
-// Generate the calendar on page load
-window.onload = generateCalendar;
+window.changeMonth = changeMonth;
+window.onload = function () {
+    generateUiMainContainer();
+    generateCalendar();
+}
