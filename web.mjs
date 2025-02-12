@@ -5,7 +5,7 @@
 
 
 // import { getGreeting } from "./common.mjs";
-// import daysData from "./days.json" with { type: "json" };
+import daysData from "./days.json" with { type: "json" };
 import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.js";
 
 

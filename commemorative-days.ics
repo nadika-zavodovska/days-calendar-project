@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//YourCompany//NONSGML v1.0//EN
+BEGIN:VEVENT
+SUMMARY:Ada Lovelace Day
+DTSTART:2024-10-07
+DESCRIPTION:https://example.com/ada-lovelace-day
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Lemur Day
+DTSTART:2024-10-24
+DESCRIPTION:https://example.com/world-lemur-day
+END:VEVENT
+END:VCALENDAR
