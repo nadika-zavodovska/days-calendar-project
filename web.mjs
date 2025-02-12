@@ -7,7 +7,7 @@
 // import { getGreeting } from "./common.mjs";
 // import daysData from "./days.json" with { type: "json" };
 import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.mjs";
-
+import { getCommemorativeDays } from "./common.mjs";
 
 let currentYear = new Date().getFullYear() // get full year
 let currentMonth = new Date().getMonth() // get current month
@@ -77,12 +77,37 @@ export function generateCalendar(daysData) {
       calendarBlock.appendChild(emptySlot);
   }
 
+  const commemorativeDays = getCommemorativeDays(currentYear, currentMonth);
+
+
+
   // Generate the days of the month
   for (let i = 1; i <= totalDaysInMonth; i++) {
     const dayElement = document.createElement("div");
     dayElement.textContent = i;  // Dummy date
     dayElement.classList.add("day");
+    // calendarBlock.appendChild(dayElement);
+
+    const event = commemorativeDays.find(e => e.day === i);
+    if (event) {
+      dayElement.classList.add("commemorative-day");
+      dayElement.title = event.name;
+      dayElement.dataset.eventName = event.name;
+      dayElement.dataset.eventUrl = event.descriptionURL;      
+      dayElement.addEventListener("click", () => displayCommemorativeDayDetails(event));
+    }
     calendarBlock.appendChild(dayElement);
+  }
+}
+
+function displayCommemorativeDayDetails(event) {
+  const titleElement = document.getElementById("title-commem-day-details");
+  const linkElement = document.getElementById("link-commem-day-details");
+
+  if (titleElement && linkElement) {
+    titleElement.innerText = event.name;
+    linkElement.href = event.descriptionURL;
+    linkElement.innerText = "More details";
   }
 }
 

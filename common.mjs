@@ -5,27 +5,27 @@ function getWeekdayIndex(dayName) {
 
 export function getCommemorativeDay(year, month, event) {
     const weekdayIndex = getWeekdayIndex(event.dayName);
-    const firstDayOfMonth = new Date(year, month, 1).getDay();   
-    const formattedFirstDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;   
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const formattedFirstDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
     let daysUntilTargetDay = (weekdayIndex - formattedFirstDay + 7) % 7;
-    let firstMatchingWeekday = 1 + daysUntilTargetDay;  
-   
+    let firstMatchingWeekday = 1 + daysUntilTargetDay;
+
     if (event.occurrence === "last") {
-        let lastDay = new Date(year, month + 1, 0).getDate();         
+        let lastDay = new Date(year, month + 1, 0).getDate();
         let allFridays = 0;
         let lastFriday = 0;
 
         for (let i = firstMatchingWeekday; i <= lastDay; i += 7) {
-            let dayToCheck = new Date(year, month, i);        
+            let dayToCheck = new Date(year, month, i);
             allFridays++;
             lastFriday = dayToCheck.getDate();
-        }    
-       
+        }
+
         if (allFridays === 4 || allFridays === 5) {
-            return lastFriday; 
+            return lastFriday;
         }
     }
-    
+
     let targetDayOfMonth;
 
     if (event.occurrence === "second") {
@@ -34,7 +34,7 @@ export function getCommemorativeDay(year, month, event) {
         targetDayOfMonth = firstMatchingWeekday + 14;
     } else if (event.occurrence === "fourth") {
         targetDayOfMonth = firstMatchingWeekday + 21;
-    } else {        
+    } else {
         targetDayOfMonth = firstMatchingWeekday;
     }
 
