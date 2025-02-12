@@ -1,8 +1,8 @@
 import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.mjs";
 import { getCommemorativeDays } from "./common.mjs";
 
-let currentYear = new Date().getFullYear() // get full year
-let currentMonth = new Date().getMonth() // get current month
+let currentYear = new Date().getFullYear(); // get full year
+let currentMonth = new Date().getMonth(); // get current month
 export let daysData = [];
 
 async function loadDaysData() {
@@ -13,18 +13,17 @@ async function loadDaysData() {
     }
 
     daysData = await response.json();
-    generateCalendar(daysData);  
+    generateCalendar(daysData);
   } catch (error) {
     console.error('Error fetching the data: ', error);
   }
 }
 
 export function generateCalendar(daysData) {
-
   const calendarTitle = document.getElementById("current-date");
   const calendarBlock = document.getElementById("calendar-container");
 
-  if (!calendarBlock || !calendarTitle) { ///Change
+  if (!calendarBlock || !calendarTitle) {
     console.error("Calendar container or title not found!");
     return;
   }
@@ -45,7 +44,7 @@ export function generateCalendar(daysData) {
     dayElement.textContent = day;
     dayElement.classList.add("header");
     calendarBlock.appendChild(dayElement);
-  })
+  });
 
   // Get the first day of the month (0 = Sunday, 1 = Monday, etc.)
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
@@ -67,7 +66,7 @@ export function generateCalendar(daysData) {
     const dayElement = document.createElement("div");
     dayElement.textContent = i;  // Dummy date
     dayElement.classList.add("day");
-    // calendarBlock.appendChild(dayElement);
+    calendarBlock.appendChild(dayElement);
 
     const event = commemorativeDays.find(e => e.day === i);
     if (event) {
@@ -75,18 +74,43 @@ export function generateCalendar(daysData) {
       dayElement.title = event.name;
       dayElement.dataset.eventName = event.name;
       dayElement.dataset.eventUrl = event.descriptionURL;
-      dayElement.addEventListener("click", () => displayCommemorativeDayDetails(event));
+      dayElement.addEventListener("click", () => displayCommemorativeDayDetails(event, i)); // Pass the day as argument
+    } else{
+      dayElement.addEventListener("click", () => hideCommemorativeDayDetails());
     }
-    calendarBlock.appendChild(dayElement);
+  }
+  showFirstDayCommemorativeDay(commemorativeDays);
+}
+
+function showFirstDayCommemorativeDay(commemorativeDays) {
+  const firstDayEvent = commemorativeDays.find(e => e.day === 1);
+  if (firstDayEvent) {
+    displayCommemorativeDayDetails(firstDayEvent, 1);
+  } else {
+    hideCommemorativeDayDetails();
   }
 }
 
-function displayCommemorativeDayDetails(event) {
+function hideCommemorativeDayDetails() {
   const titleElement = document.getElementById("title-commem-day-details");
   const linkElement = document.getElementById("link-commem-day-details");
 
   if (titleElement && linkElement) {
-    titleElement.innerText = event.name;
+    titleElement.innerText = "";
+    linkElement.href = "";
+    linkElement.innerText = "";
+  }
+}
+
+function displayCommemorativeDayDetails(event, day) {
+  const titleElement = document.getElementById("title-commem-day-details");
+  const linkElement = document.getElementById("link-commem-day-details");
+
+  const months = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"]; 
+
+  if (titleElement && linkElement) {
+    titleElement.innerText = `${day} ${months[currentMonth]} - ${event.name}`;
     linkElement.href = event.descriptionURL;
     linkElement.innerText = "More details";
   }
