@@ -40,3 +40,15 @@ export function getCommemorativeDay(year, month, event) {
 
     return targetDayOfMonth;
 }
+
+export function getCommemorativeDays(year, month) {
+    const months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+
+    return daysData
+        .filter(event => event.monthName === months[month])
+        .map(event => ({
+            ...event,
+            day: getCommemorativeDay(year, month, event)
+        }));
+}
