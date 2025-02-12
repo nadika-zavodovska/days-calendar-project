@@ -79,8 +79,6 @@ export function generateCalendar(daysData) {
 
   const commemorativeDays = getCommemorativeDays(currentYear, currentMonth);
 
-
-
   // Generate the days of the month
   for (let i = 1; i <= totalDaysInMonth; i++) {
     const dayElement = document.createElement("div");
