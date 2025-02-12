@@ -1,3 +1,5 @@
+import { daysData } from "./web.mjs";
+
 function getWeekdayIndex(dayName) {
     const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     return dayNames.indexOf(dayName);

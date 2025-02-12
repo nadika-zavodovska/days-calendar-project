@@ -1,23 +1,9 @@
-// This is a placeholder file which shows how you can access functions and data defined in other files.
-// It can be loaded into index.html.
-// Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
-// You can't open the index.html file using a file:// URL.
-
-
-// import { getGreeting } from "./common.mjs";
-// import daysData from "./days.json" with { type: "json" };
 import { generateUiMainContainer } from "./generate-ui/generate-ui-main-container.mjs";
 import { getCommemorativeDays } from "./common.mjs";
 
 let currentYear = new Date().getFullYear() // get full year
 let currentMonth = new Date().getMonth() // get current month
-let daysData = [];
-
-window.onload = function () {
-  generateUiMainContainer();
-  generateCalendar();
-  loadDaysData();
-}
+export let daysData = [];
 
 async function loadDaysData() {
   try {
@@ -27,54 +13,51 @@ async function loadDaysData() {
     }
 
     daysData = await response.json();
-    generateCalendar(daysData);    
+    generateCalendar(daysData);  
   } catch (error) {
     console.error('Error fetching the data: ', error);
   }
 }
 
 export function generateCalendar(daysData) {
-    
-    const calendarTitle = document.getElementById("current-date");
 
-    const calendarBlock = document.getElementById("calendar-container");
-    
-    if (!calendarBlock) {
-        console.error("Calendar container not found!");
-        return;
-    }
+  const calendarTitle = document.getElementById("current-date");
+  const calendarBlock = document.getElementById("calendar-container");
 
-    // clear existing calendar
-    calendarBlock.innerHTML = '';
+  if (!calendarBlock || !calendarTitle) { ///Change
+    console.error("Calendar container or title not found!");
+    return;
+  }
 
-    const months = ["January", "February", "March", "April", "May", "June", 
-                "July", "August", "September", "October", "November", "December"];
+  // clear existing calendar
+  calendarBlock.innerHTML = '';
 
-    if (calendarTitle) {
-        calendarTitle.textContent = `${months[currentMonth]} ${currentYear}`;
-    }
+  const months = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
 
-    const daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];     
+  calendarTitle.textContent = `${months[currentMonth]} ${currentYear}`;
 
-   // Generate header (days of the week)
-    daysOfTheWeek.forEach(day => {
-        const dayElement = document.createElement("div");
-        dayElement.textContent = day;
-        dayElement.classList.add("header");
-        calendarBlock.appendChild(dayElement);
-    })
+  const daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-    // Get the first day of the month (0 = Sunday, 1 = Monday, etc.)
+  // Generate header (days of the week)
+  daysOfTheWeek.forEach(day => {
+    const dayElement = document.createElement("div");
+    dayElement.textContent = day;
+    dayElement.classList.add("header");
+    calendarBlock.appendChild(dayElement);
+  })
+
+  // Get the first day of the month (0 = Sunday, 1 = Monday, etc.)
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
   const totalDaysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); // Get the last date of the month
 
   // Adjust the first day so Monday is the start of the calendar (1 = Monday, 7 = Sunday)
   const adjustedFirstDay = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1; // Adjust Sunday (0) to index 6 (Saturday)
-  
+
   // Add empty slots for days before the first day of the month
   for (let i = 0; i < adjustedFirstDay; i++) {
     const emptySlot = document.createElement("div");
-      calendarBlock.appendChild(emptySlot);
+    calendarBlock.appendChild(emptySlot);
   }
 
   const commemorativeDays = getCommemorativeDays(currentYear, currentMonth);
@@ -91,7 +74,7 @@ export function generateCalendar(daysData) {
       dayElement.classList.add("commemorative-day");
       dayElement.title = event.name;
       dayElement.dataset.eventName = event.name;
-      dayElement.dataset.eventUrl = event.descriptionURL;      
+      dayElement.dataset.eventUrl = event.descriptionURL;
       dayElement.addEventListener("click", () => displayCommemorativeDayDetails(event));
     }
     calendarBlock.appendChild(dayElement);
@@ -111,9 +94,9 @@ function displayCommemorativeDayDetails(event) {
 
 // Update selected month and year
 export function setDate(selectedMonth, selectedYear) {
-    currentMonth = selectedMonth;
-    currentYear = selectedYear;
-    generateCalendar();
+  currentMonth = selectedMonth;
+  currentYear = selectedYear;
+  generateCalendar();
 }
 
 // Function to handle month navigation (forward or backward)
@@ -132,3 +115,7 @@ export function changeMonth(direction) {
   generateCalendar();
 }
 
+window.onload = function () {
+  generateUiMainContainer();
+  loadDaysData();
+}

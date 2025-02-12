@@ -111,3 +111,18 @@ body {
 #commem-day-details-section{
   text-align: center;
 }
+
+#commem-day-details-section {
+  text-align: center;
+}
+
+.commemorative-day {
+  background-color: #ffc60b!important;
+  font-weight: bold;
+  border: 2px solid #ffc60b;
+  cursor: pointer;
+}
+
+.commemorative-day:hover {
+  background-color: #eca306!important;
+}
