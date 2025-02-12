@@ -20,6 +20,17 @@ describe("getCommemorativeDay function", () => {
             "descriptionURL": "https://codeyourfuture.github.io/The-Piscine/days/ada.txt"
         })).toBe(8);
     });
+
+    test("should return the correct day for Ada World Lemur Day when October 2024 is selected", () => {
+        expect(getCommemorativeDay(2024, 9, {
+            "name": "World Lemur Day",
+            "monthName": "October",
+            "dayName": "Friday",
+            "occurrence": "last",
+            "descriptionURL": "https://codeyourfuture.github.io/The-Piscine/days/lemurs.txt"
+        })).toBe(25);
+    });
 });
+
 
 
