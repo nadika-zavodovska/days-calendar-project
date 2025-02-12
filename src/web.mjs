@@ -75,7 +75,7 @@ export function generateCalendar(daysData) {
       dayElement.dataset.eventName = event.name;
       dayElement.dataset.eventUrl = event.descriptionURL;
       dayElement.addEventListener("click", () => displayCommemorativeDayDetails(event, i)); // Pass the day as argument
-    } else{
+    } else {
       dayElement.addEventListener("click", () => hideCommemorativeDayDetails());
     }
   }
@@ -107,7 +107,7 @@ function displayCommemorativeDayDetails(event, day) {
   const linkElement = document.getElementById("link-commem-day-details");
 
   const months = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"]; 
+    "July", "August", "September", "October", "November", "December"];
 
   if (titleElement && linkElement) {
     titleElement.innerText = `${day} ${months[currentMonth]} - ${event.name}`;
