@@ -1,7 +1,7 @@
 import { getCommemorativeDay } from '../src/common.mjs';
 
-describe("Checking to return the correct number of day in getCommemorativeDay function", () => {
-    test("should return the correct day for International Binturong Day", () => {
+describe("getCommemorativeDay function", () => {
+    test("should return the correct day for International Binturong Day when May 2030 is selected", () => {
         expect(getCommemorativeDay(2030, 4, {
             "name": "International Binturong Day",
             "monthName": "May",
@@ -11,3 +11,5 @@ describe("Checking to return the correct number of day in getCommemorativeDay fu
         })).toBe(11);
     });
 });
+
+
