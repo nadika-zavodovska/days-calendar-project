@@ -1,5 +1,3 @@
-import daysData from "./days.json" with { type: "json" };
-
 function getWeekdayIndex(dayName) {
     const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     return dayNames.indexOf(dayName);
@@ -29,7 +27,7 @@ export function getCommemorativeDay(year, month, event) {
     }
     
     let targetDayOfMonth;
-    
+
     if (event.occurrence === "second") {
         targetDayOfMonth = firstMatchingWeekday + 7;
     } else if (event.occurrence === "third") {

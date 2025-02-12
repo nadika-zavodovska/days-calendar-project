@@ -11,8 +11,29 @@ import { generateUiMainContainer } from "./generate-ui/generate-ui-main-containe
 
 let currentYear = new Date().getFullYear() // get full year
 let currentMonth = new Date().getMonth() // get current month
+let daysData = [];
 
-export function generateCalendar() {
+window.onload = function () {
+  generateUiMainContainer();
+  generateCalendar();
+  loadDaysData();
+}
+
+async function loadDaysData() {
+  try {
+    const response = await fetch('./days.json');
+    if (!response.ok) {
+      throw new Error('Failed to load days data');
+    }
+
+    daysData = await response.json();
+    generateCalendar(daysData);    
+  } catch (error) {
+    console.error('Error fetching the data: ', error);
+  }
+}
+
+export function generateCalendar(daysData) {
     
     const calendarTitle = document.getElementById("current-date");
 
@@ -87,8 +108,4 @@ export function changeMonth(direction) {
 
   generateCalendar();
 }
-// window.changeMonth = changeMonth;
-window.onload = function () {
-    generateUiMainContainer();
-    generateCalendar();
-}
+
