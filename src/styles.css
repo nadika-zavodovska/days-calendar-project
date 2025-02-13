@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  height: 100%;
 }
 #page-title{
   text-align: center;
@@ -10,6 +11,7 @@ body {
   align-items: center;
   max-width: 25%;
   margin: 0 auto;
+  min-height: 80vh;
 }
 
 #nav-section {
@@ -125,4 +127,9 @@ body {
 
 .commemorative-day:hover {
   background-color: #eca306!important;
+}
+
+#footer-container {
+  text-align: center; 
+  margin-top: 20px;  
 }
