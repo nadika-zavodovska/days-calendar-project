@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Comfortaa", serif;
+  height: 100%;
+}
+a{
+  color: #007bff;
 }
 #page-title{
   text-align: center;
@@ -8,16 +14,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 25%;
+  max-width: 30%;
   margin: 0 auto;
+  min-height: 80vh;
 }
 
 #nav-section {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: 100%;
+  align-items: center;  
   justify-content: space-between;
+  width: 100%;
 }
 
 #select-date-section {
@@ -34,8 +41,7 @@ body {
 #calendar-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-gap: 5px;
-  /* max-width: 300px; */
+  grid-gap: 5px;  
   margin: 20px auto;
 }
 
@@ -86,7 +92,7 @@ body {
   border: 1px solid #007bff;
   border-radius: 5px;
   margin-right: 10px;
-  max-width: 20%;
+  max-width: 27%;
 }
 
 #submit-btn {
@@ -125,4 +131,9 @@ body {
 
 .commemorative-day:hover {
   background-color: #eca306!important;
+}
+
+#footer-container {
+  text-align: center; 
+  margin-top: 20px;  
 }

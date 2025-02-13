@@ -16,7 +16,21 @@ export function generateUiMainContainer() {
 
     const footerContainer = document.createElement("footer");
     footerContainer.id = "footer-container";
-    document.body.appendChild(footerContainer);  
+    document.body.appendChild(footerContainer); 
+    
+    const copyrightFooter = document.createElement("div");
+    copyrightFooter.innerText = "© 2025 Days Calendar. All rights reserved.";
+    footerContainer.appendChild(copyrightFooter);
+
+    const githubFooter = document.createElement("div");
+    githubFooter.innerText = "Check the code on ";
+    footerContainer.appendChild(githubFooter);
+
+    const githubLink = document.createElement("a");
+    githubLink.href = "https://github.com/nadika-zavodovska/days-calendar-project";
+    githubLink.target = "_blank";
+    githubLink.innerText = "GitHub";
+    githubFooter.appendChild(githubLink);
 
     const selectDateSection = document.createElement("section");
     selectDateSection.id = "select-date-section";
