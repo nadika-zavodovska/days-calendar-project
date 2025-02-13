@@ -29,6 +29,7 @@ export function generateUiMainContainer() {
     const githubLink = document.createElement("a");
     githubLink.href = "https://github.com/nadika-zavodovska/days-calendar-project";
     githubLink.target = "_blank";
+    githubLink.ariaLabel = "Open a GitHub repository with the project code."
     githubLink.innerText = "GitHub";
     githubFooter.appendChild(githubLink);
 
@@ -57,10 +58,12 @@ export function generateUiMainContainer() {
     nextMonthBtn.addEventListener("click", () => changeMonth(1));           
 
     const monthLabel = document.createElement('label');
+    monthLabel.setAttribute("for", "months-select");
     monthLabel.innerText = 'Month:';
    
     const monthsCreateSelect = document.createElement("select");
     monthsCreateSelect.id = "months-select"; 
+    monthsCreateSelect.ariaLabel = "Choose a month from the dropdown";
     selectDateSection.appendChild(monthLabel);
     selectDateSection.appendChild(monthsCreateSelect);
 
@@ -78,9 +81,11 @@ export function generateUiMainContainer() {
 
     const yearLabel = document.createElement("label");
     yearLabel.innerText = "Year:";
+    yearLabel.setAttribute("for", "year-input");
     const yearInput = document.createElement("input");
     yearInput.id = "year-input";
     yearInput.type = "number";
+    yearInput.ariaLabel = "Choose a year";
     yearInput.placeholder = "Enter a year";
     selectDateSection.appendChild(yearLabel);
     selectDateSection.appendChild(yearInput);
@@ -119,6 +124,7 @@ export function generateUiMainContainer() {
     linkCommemDayDetails.id = "link-commem-day-details";
     linkCommemDayDetails.href = "https://codeyourfuture.github.io/The-Piscine/days/vultures.txt";
     linkCommemDayDetails.target = "_blank";
+    linkCommemDayDetails.ariaLabel = "Read more about the commemorative day";
     linkCommemDayDetails.innerText = "More details";
     commemDayDetailsSection.appendChild(linkCommemDayDetails);
 }

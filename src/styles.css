@@ -3,26 +3,32 @@
 body {
   font-family: "Comfortaa", serif;
   height: 100%;
+  font-size: 16px;
+  background-color: #e4f5fd;
 }
-a{
-  color: #007bff;
+
+a {
+  color: #023f81;
 }
-#page-title{
+
+#page-title {
   text-align: center;
+  padding: 20px 40px;
 }
+
 #main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 30%;
+  width: 400px;
   margin: 0 auto;
-  min-height: 80vh;
+  min-height: 75vh;
 }
 
 #nav-section {
   display: flex;
   flex-direction: row;
-  align-items: center;  
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 }
@@ -40,8 +46,8 @@ a{
 
 #calendar-container {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 5px;  
+  grid-template-columns: repeat(7, minmax(50px, 1fr));
+  grid-gap: 5px;
   margin: 20px auto;
 }
 
@@ -73,23 +79,28 @@ a{
 #prev-month,
 #next-month {
   padding: 10px;
-  font-size: 16px;
-  cursor: pointer;  
-  background-color: #007bff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #023f81;
+  transition: background-color 0.5s ease-in-out;
   color: white;
   border: none;
-  border-radius: 5px;  
+  border-radius: 5px;
+}
+
+#submit-btn {
+  font-size: 0.9rem;
 }
 
 #prev-month:hover,
 #next-month:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
 }
 
 #months-select,
 #year-input {
   padding: 7px 0 7px 5px;
-  border: 1px solid #007bff;
+  border: 1px solid #023f81;
   border-radius: 5px;
   margin-right: 10px;
   max-width: 27%;
@@ -97,11 +108,13 @@ a{
 
 #submit-btn {
   padding: 10px;
-  background-color: #0056b3;
+  background-color: #0a61bf;
+  transition: background-color 0.5s ease-in-out;
   border: none;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
+
 }
 
 #submit-btn:hover {
@@ -114,7 +127,8 @@ a{
   justify-content: space-between;
   margin-bottom: 10px;
 }
-#commem-day-details-section{
+
+#commem-day-details-section {
   text-align: center;
 }
 
@@ -123,17 +137,66 @@ a{
 }
 
 .commemorative-day {
-  background-color: #ffc60b!important;
+  background-color: #ffc60b !important;
   font-weight: bold;
   border: 2px solid #ffc60b;
   cursor: pointer;
 }
 
 .commemorative-day:hover {
-  background-color: #eca306!important;
+  background-color: #eca306 !important;
 }
 
 #footer-container {
-  text-align: center; 
-  margin-top: 20px;  
+  text-align: center;
+  margin-top: 20px;
+}
+
+#current-date {
+  text-align: center;
+}
+
+@media (max-width: 450px) {
+  #main-container {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  #page-title {
+    font-size: 1.4rem;
+    padding: 10px 20px;
+  }
+
+  #prev-month,
+  #next-month,
+  #submit-btn,
+  label,
+  #footer-container {
+    font-size: 0.7rem;
+  }
+
+  #calendar-container div {
+    padding: 10px 0;
+
+  }
+
+  #calendar-container {
+    margin: 10px auto 0;
+    grid-gap: 1px;
+    grid-template-columns: repeat(7, minmax(42px, 1fr));
+    font-size: 0.9rem;
+  }
+
+  #months-select,
+  #year-input {
+    max-width: 22%;
+  }
+
+  #main-container {
+    min-height: 80vh;
+  }
+
+  #title-commem-day-details {
+    font-size: 1.2rem;
+  }
 }
