@@ -102,6 +102,16 @@ function hideCommemorativeDayDetails() {
   }
 }
 
+function addOrdinalSuffix(day) {
+  if (day % 100 >= 11 && day % 100 <= 13) return 'th';
+
+  const lastNum = day % 10;
+  if (lastNum === 1) return 'st';
+  if (lastNum === 2) return 'nd';
+  if (lastNum === 3) return 'rd';
+  return 'th';
+}
+
 function displayCommemorativeDayDetails(event, day) {
   const titleElement = document.getElementById("title-commem-day-details");
   const linkElement = document.getElementById("link-commem-day-details");
@@ -109,8 +119,10 @@ function displayCommemorativeDayDetails(event, day) {
   const months = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
+  const ordinalSuffix = addOrdinalSuffix(day);
+
   if (titleElement && linkElement) {
-    titleElement.innerText = `${day} ${months[currentMonth]} - ${event.name}`;
+    titleElement.innerText = `${day}${ordinalSuffix} of ${months[currentMonth]} - ${event.name}`;
     linkElement.href = event.descriptionURL;
     linkElement.innerText = "More details";
   }
