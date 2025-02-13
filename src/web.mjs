@@ -102,7 +102,7 @@ function hideCommemorativeDayDetails() {
   }
 }
 
-function addOrdinalSuffix(day) {
+export function addOrdinalSuffix(day) {
   if (day % 100 >= 11 && day % 100 <= 13) return 'th';
 
   const lastNum = day % 10;
