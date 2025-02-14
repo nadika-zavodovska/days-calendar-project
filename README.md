@@ -26,22 +26,24 @@ This project dynamically generates a calendar displaying commemorative days that
 3. **Open index.html in your browser** <br>Ensure the project is served over HTTP for the module system to work. [Learn to serve over HTTP.](https://www.npmjs.com/package/http-server)
 
 ## Usage
-1. Interactive Calendar:
+**1. Interactive Calendar:**
 
-. Open the calendar in the browser to see the current month.
-. Use the buttons to navigate to the previous or next month.
-. Use the dropdowns to select a specific month and year.
-. Use the input field to enter year in number.
-. The commemorative days for each month wi  ll be displayed on the calendar.
+- Open the calendar in the browser to see the current month.
+- Use the dropdowns to select a specific month.
+- Use the input field to enter year in number.
+- Use the buttons to navigate to the previous or next month.
+- The commemorative days for each month will be displayed on the calendar.
 
-2. Generate iCalendar:
+**2. Generate .ics file which can be imported into Google Calendar:**
 
-. Run the iCalendar generation script (node generate-ics.js) to create an .ics file.
-. Import the .ics file into Google Calendar to view the commemorative days.
+- Ensure you have Node.js installed.
+- Run script to generate an .ics file.
+```node generate-ics.js```.
+- Import the .ics file into Google Calendar to view the commemorative days.
 
 ## Running the iCal Generator Script
 To generate the .ics file:
-1. Ensure you have Node.js installed.
+1. 
 2. Run the iCalendar generator script:
 3. node generate-ics.js
 4. The script will generate a file named commemorative-days.ics which can be imported into Google Calendar.
