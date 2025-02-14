@@ -1,117 +1,51 @@
 # Days calendar project
 
-There are some commemorative days which occur annually, but not on a fixed date.
+This project dynamically generates a calendar displaying commemorative days that occur annually but on non-fixed dates (e.g second Tuesday of October, third Saturday of September). It reads a JSON file (`days.json`) containing the commemorative days and displays them on a calendar. Additionally, the project generates an `.ics` file in iCalendar format, which can be imported into Google Calendar.
 
-For example, Ada Lovelace Day happens on the second Tuesday every October.
+**The goal** is to track these commemorative days across multiple years and provide a user-friendly way to visualise and interact with them.
 
-The _date_ that it occurs is different every year. But it has a fixed pattern.
+## Features
 
-We have supplied a JSON file ([`data.json`](./data.json)) which contains descriptions of several of these days.
+- **Commemorative Day Tracking**: Automatically calculates and displays commemorative days on the calendar based on their occurrence pattern.
+- **Interactive Calendar**: Displays the current month, allows navigation to previous and next months, and lets users jump to specific months and years.
+- **iCalendar Export**: Generates an `.ics` file containing commemorative day events from 2020 to 2030, which can be imported into Google Calendar.
+- **Commemorative Day Details**: Fetches additional information about the commemorative days from URLs in the JSON file.
 
-The goal of this project is to present this data usefully to users.
+## Technologies
 
-## Requirements
+- **HTML**: Used for the structure of the calendar.
+- **CSS**: Used CSS for styles.
+- **JavaScript**: Used for the logic, including generating the calendar, calculating commemorative days, and generating the `.ics` file.
+- **Node.js**: Used for generating the .ics file and running Jest tests.
+- **JSON**: Stores the data for each commemorative day (name, description, occurrence, etc.).
+- **Jest:** Used for unit testing to ensure the core functionality works as expected.
 
-This may be an individual or a team project - your class leaders will tell you which you are doing. If it is a team project, they will also tell you how the groups will work.
+## Set up & Installation
+1. **Clone the repository** <br>```git clone https://github.com/nadika-zavodovska/days-calendar-project```
+2. **Navigate into the project folder (if needed)** <br>```cd days-calendar-project``` 
+3. **Open index.html in your browser** <br>Ensure the project is served over HTTP for the module system to work. [Learn to serve over HTTP.](https://www.npmjs.com/package/http-server)
 
-Some of the requirements of this project are only required if you are working in a group of at least a certain size.
+## Usage
+**Interactive Calendar:**
 
-You must submit both a link to your GitHub repo, and a link to the deployed website.
+- Open the calendar in the browser to see the current month.
+- Use the dropdowns to select a specific month.
+- Use the input field to enter year in number.
+- Use the buttons to navigate to the previous or next month.
+- The commemorative days for each month will be displayed on the calendar.
 
-Your website must be hosted on the internet, and must be automatically deployed when you merge changes to your GitHub repo.
+**Generate .ics file which can be imported into Google Calendar:**
 
-You must be able to explain every line of code in your project, even ones other people in your group wrote.
+- Ensure you have Node.js installed.
+- Run script to generate an .ics file.<br>
+```node generate-ics.js```.
+- Import the .ics file into Google Calendar to view the commemorative days.
 
-### Requirements for everyone
+## Running tests
+#### Make sure you have **Node.js** and **npm** installed before running the tests.
+1. **Install dependencies:** <br>```npm install```
+2. **Run Unit Tests:** <br>```npm test```<br>This will run the tests using [Jest](https://jestjs.io).
+3. **Check the Test Results:** <br>The test results will be displayed in the terminal.
 
-Regardless of your group size, you must:
-
-* Create an HTML page which, when loaded, displays a calendar.
-* The calendar must show every day of the current month, each as a rectangle. Each row of rectangles must show one week. The first column must show Mondays. The first day of the month must be shown in the first row.
-* There must be two buttons which, when clicked, switch what is displayed. One button must change the display to the previous month. The other button must change the display to the next month. On repeated clicks, these buttons must keep moving back/forwards in time, one month per click.
-* There must be a way to jump to a particular month and year, e.g. "October 2020". For example, you could use a `<select>` tag for each of the month name and a reasonable range of years.
-* The days from the JSON file must appear correctly when the month they fall in is displayed. For example:
-  * If October 2024 is being shown, October 8th must show Ada Lovelace Day.
-  * If October 2025 is being shown, October 14th must show Ada Lovelace Day.
-* The calendar should work for every year - if someone goes to 1900, or 2050, or any other year, the commemerative days should be correctly displayed.
-* The calendar must be dynamically generated by reading the JSON file. You must not hard-code any days in the HTML file.
-* Other than the above styling requirements, no styling is required.
-
-### Requirements for groups of at least 2
-
-As well as all previous requirements, you must:
-
-* Produce a script that can be run in a terminal via `node`, which outputs to standard out (via calls to `console.log`) an [iCal format](https://icalendar.org/) file containing entries for every day in the JSON file. You must not use recurring events. There must be one entry per commemorative day per year from 2020 until 2030 (inclusive).
-* If you save this output to an `.ics` file, and import it into Google Calendar, it should show the days correctly in the calendar. There is a suggested workflow for testing this listed below.
-* Logic for calculating dates must be shared between the web generator and the iCal generator.
-
-### Requirements for groups of at least 3
-
-As well as all previous requirements, you must:
-* Fetch a description of the day from the URL supplied in the JSON file.
-* In the HTML page, if you click on a listed commemorative day, the page should show a description of the day, for instance in the calendar event or as a modal dialog in the page.
-* In the iCal file, the **DESCRIPTION** field should contain the description of the day.
-
-## How to test Google Calendar imports
-
-Go to https://calendar.google.com
-
-We recommend you create a new empty calendar for testing. To do this:
-1. In the bar on the left next to "Other Calendars", click the "+" and then "Create new calendar".
-2. Give your calendar a name like "Test calendar".
-
-Import your `.ics` file into the calendar. To do this:
-1. In the bar on the left next to "Other Calendars", click the "+" and then "Import".
-2. Select your test calendar from the "Add to calendar" drop down".
-3. Select the `.ics` file you have created.
-4. Press "Import".
-
-Each time you do this, you probably want to delete your Test calendar, and create a new one.
-
-## Supplied scaffolding
-
-We have supplied a few sample files in the repo to demonstrate how you can define functions in one file, and use them both from a web page and a Node application. Feel free to use these files in your solution if you want, or to just use them for inspiration for your own solution.
-
-Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server - you can't open the `index.html` file using a `file://` URL.
-
-## Rubric
-
-### For everyone
-
-* On the web page, open October 2024. Observe:
-  * A grid of 5 rows x 7 columns.
-  * The first row contains Tuesday October 1 - Sunday October 6. Monday is either labelled for September 30 or is blank.
-  * The last row contains Monday October 28 - Thursday October 31. Friday - Sunday are either labelled for November or are blank.
-  * October 8th: Ada Lovelace Day.
-  * October 25th: World Lemur Day.
-* On the web page, open October 2020. Observe:
-  * October 13th: Ada Lovelace Day.
-  * October 30th: World Lemur Day.
-* On the web page, open May 2030. Observe:
-  * May 11th: International Binturong Day.
-* The following months start and end on these dates, and do not have extra days or padding boxes outside of the weeks they're meant to cover:
-  * 2025-01: Wednesday (two days before, labelled or blank) - Friday (two days after, labelled or blank)
-  * 2025-03: Saturday (5 days before) - Monday (6 days after)
-  * 2025-09: Monday (no empty days before) - Tuesday (5 empty days after)
-  * 2025-11: Saturday (5 empty days before) - Sunday (no empty days after)
-* Functioning previous and next buttons.
-* A usable way of jumping to a month+year.
-* UI is generated by DOM manipulation.
-
-### For groups of at least 2
-
-* Run the supplied file with `node`, sending the output to a file named `generated-days.ics`. Import that file into a Google Calendar (see instructions above). Verify the same dates as in the web UI.
-* Logic for calculating dates must be shared between the web generator and the iCal generator.
-
-### For groups of at least 3
-
-* Clicking an Ada Lovelace Day in the web UI displays the below text.
-* Clicking a Google Calendar event for Ada Lovelace Day displays the below text.
-
-Text for Ada Lovelace Day (which must be fetched via API):
-
-> Ada Lovelace was a mathematician who made contributions to the field of computing in its very early days. On Ada Lovelace Day we celebrate and raise awareness of the contributions of women to STEM fields.
-
-## Working in a group
-
-If you working in a group, we recommend that **all** team members read the [Working in a group guidelines](https://github.com/CodeYourFuture/The-Piscine/blob/main/working-in-a-group.md). Confirm all group members have read and understand these before starting to write code.
+## Contributions 
+Contributions are welcome. If you find any bugs or want to improve the project, feel free to fork the repo, make your changes, and submit a pull request.
