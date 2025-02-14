@@ -1,5 +1,5 @@
 import { setDate } from "../web.mjs";
-import { generateUiMainContainer } from "../src/generate-ui/generate-ui-main-container.mjs";
+import { generateUiMainContainer } from "../generate-ui/generate-ui-main-container.mjs";
 
 describe('setDate function', () => {
     beforeEach(() => {
