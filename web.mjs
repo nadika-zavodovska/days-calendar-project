@@ -3,16 +3,20 @@ import { getCommemorativeDays } from "./common.mjs";
 
 let currentYear = new Date().getFullYear(); // get full year
 let currentMonth = new Date().getMonth(); // get current month
+// Store the event days after loading from JSON
 export let daysData = [];
 
 async function loadDaysData() {
   try {
     const response = await fetch('./days.json');
+
     if (!response.ok) {
       throw new Error('Failed to load days data');
     }
 
-    daysData = await response.json();
+    // Convert JSON data to JavaScript object
+    daysData = await response.json(); 
+    // Generate the calendar after loading data
     generateCalendar(daysData);
   } catch (error) {
     console.error('Error fetching the data: ', error);
@@ -65,7 +69,7 @@ export function generateCalendar(daysData) {
   // Generate the days of the month
   for (let i = 1; i <= totalDaysInMonth; i++) {
     const dayElement = document.createElement("div");
-    dayElement.textContent = i;  // Dummy date
+    dayElement.textContent = i; 
     dayElement.classList.add("day");
     calendarBlock.appendChild(dayElement);
 
@@ -100,6 +104,7 @@ function showFirstDayCommemorativeDay(commemorativeDays) {
   }
 }
 
+// Hide event details when no event is selected
 function hideCommemorativeDayDetails() {
   const titleElement = document.getElementById("title-commem-day-details");
   const linkElement = document.getElementById("link-commem-day-details");
@@ -111,6 +116,7 @@ function hideCommemorativeDayDetails() {
   }
 }
 
+// Function to add suffix (st, nd, rd, th) to day numbers
 export function addOrdinalSuffix(day) {
   if (day % 100 >= 11 && day % 100 <= 13) return 'th';
 
@@ -121,6 +127,7 @@ export function addOrdinalSuffix(day) {
   return 'th';
 }
 
+// Show event details when clicking on a commemorative day
 function displayCommemorativeDayDetails(event, day) {
   const titleElement = document.getElementById("title-commem-day-details");
   const linkElement = document.getElementById("link-commem-day-details");
