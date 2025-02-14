@@ -8,7 +8,7 @@ const getWeekdayIndex = (weekday) => {
 
 // Function to calculate the nth occurrence of a specific weekday in a given month
 const calculateOccurrenceDate = (month, weekday, occurrence, year) => {
-  const firstDayOfMonth = new Date(year, month, 1).getDay(); // Day of the week (0 = Sunday)
+  const firstDayOfMonth = new Date(year, month, 1).getDay(); // Find first day of the month (0 = Sunday)
   const weekdayIndex = getWeekdayIndex(weekday); // Get index (0 = Monday, 6 = Sunday)
 
   // Find the first occurrence of the given weekday in this month
@@ -29,18 +29,15 @@ const calculateOccurrenceDate = (month, weekday, occurrence, year) => {
   // Handle last occurrence
   if (occurrence === "last") {
     let lastDay = new Date(year, month + 1, 0).getDate(); // Get last day of month
-    for (let i = lastDay; i > 0; i--) {
+    for (let i = lastDay; i > 0; i--) { // Loop backwards from last day
       let day = new Date(year, month, i).getDay();
       if (day === weekdayIndex) {
-        return new Date(year, month, i);
+        return new Date(year, month, i); // Return the last occurrence of the weekday
       }
     }
   }
-
   return null; // Fallback in case of an error
 };
-
-
 
 // Load the JSON file
 const rawData = fs.readFileSync('days.json', 'utf8');
@@ -50,6 +47,7 @@ const days = JSON.parse(rawData); // Parse the data into a JavaScript object
 function generateIcal(events) {
   let ical = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//YourCompany//NONSGML v1.0//EN\n';
 
+  // Loop through each year from 2020 to 2030
   for (let year = 2020; year <= 2030; year++) { 
     events.forEach(event => {
       const { name, monthName, dayName, occurrence, descriptionURL } = event;
@@ -66,9 +64,8 @@ function generateIcal(events) {
         return;  // Skip this entry
       }
 
-      // Format the date to YYYYMMDDTHHmmssZ
+      // Format the date to YYYYMMDD
       const startDate = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`;
-
 
       console.log(`Start date for ${name} in ${year}:`, startDate);
 
