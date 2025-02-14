@@ -16,7 +16,7 @@ const calculateOccurrenceDate = (month, weekday, occurrence, year) => {
 
   // Calculate the nth occurrence
   let date = firstOccurrenceDay + (occurrence === 'second' ? 7 : occurrence === 'third' ? 14 : occurrence === 'fourth' ? 21 : 0);
-  
+
   // Handle last occurrence
   if (occurrence === 'last') {
     const daysInMonth = new Date(year, month + 1, 0).getDate(); // Get the number of days in the month
@@ -36,33 +36,35 @@ const days = JSON.parse(rawData); // Parse the data into a JavaScript object
 function generateIcal(events) {
   let ical = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//YourCompany//NONSGML v1.0//EN\n';
 
-  events.forEach(event => {
-    const { name, monthName, dayName, occurrence, descriptionURL } = event;
+  for (let year = 2020; year <= 2030; year++) { 
+    events.forEach(event => {
+      const { name, monthName, dayName, occurrence, descriptionURL } = event;
 
-    // Get the month index from the month name (0 = January, 11 = December)
-    const monthIndex = new Date(`${monthName} 1, 2000`).getMonth();
-    const year = 2020; // You can adjust this as needed, or loop through 2020-2030
+      // Get the month index from the month name (0 = January, 11 = December)
+      const monthIndex = new Date(`${monthName} 1, 2000`).getMonth();
 
-    // Calculate the event date based on the month, weekday, and occurrence
-    const date = calculateOccurrenceDate(monthIndex, dayName, occurrence, year);
+      // Calculate the event date based on the month, weekday, and occurrence
+      const date = calculateOccurrenceDate(monthIndex, dayName, occurrence, year);
 
-    // If the date is invalid, log an error and continue
-    if (isNaN(date.getTime())) {
-      console.error(`Invalid date calculated for ${name}: ${monthName} ${occurrence} ${dayName}, ${year}`);
-      return;  // Skip this entry
-    }
+      // If the date is invalid, log an error and continue
+      if (isNaN(date.getTime())) {
+        console.error(`Invalid date calculated for ${name}: ${monthName} ${occurrence} ${dayName}, ${year}`);
+        return;  // Skip this entry
+      }
 
-    // Format the date to YYYYMMDDTHHmmssZ
-    const startDate = date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'; // Remove dashes and colons, append Z for UTC
-    console.log(`Start date for ${name}:`, startDate);
+      // Format the date to YYYYMMDDTHHmmssZ
+      const startDate = date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
-    // Add to iCal content
-    ical += `BEGIN:VEVENT\n`;
-    ical += `SUMMARY:${name}\n`;
-    ical += `DTSTART:${startDate}\n`;
-    ical += `DESCRIPTION:${descriptionURL}\n`;
-    ical += `END:VEVENT\n`;
-  });
+      console.log(`Start date for ${name} in ${year}:`, startDate);
+
+      // Add to iCal content
+      ical += `BEGIN:VEVENT\n`;
+      ical += `SUMMARY:${name} (${year})\n`;
+      ical += `DTSTART:${startDate}\n`;
+      ical += `DESCRIPTION:${descriptionURL}\n`;
+      ical += `END:VEVENT\n`;
+    });
+  }
 
   ical += 'END:VCALENDAR';
 
@@ -75,5 +77,3 @@ const icalContent = generateIcal(days);
 // Save the iCal content to a file
 fs.writeFileSync('commemorative-days.ics', icalContent, 'utf8');
 console.log('iCal file generated: commemorative-days.ics');
-
-
