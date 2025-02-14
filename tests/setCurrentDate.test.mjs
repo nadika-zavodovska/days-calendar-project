@@ -1,4 +1,4 @@
-import { setDate } from "../src/web.mjs";
+import { setDate } from "../web.mjs";
 import { generateUiMainContainer } from "../src/generate-ui/generate-ui-main-container.mjs";
 
 describe('setDate function', () => {

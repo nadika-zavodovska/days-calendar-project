@@ -1,4 +1,4 @@
-import { addOrdinalSuffix } from "../src/web.mjs";
+import { addOrdinalSuffix } from "../web.mjs";
 
 describe("addOrdinalSuffix function", () => {
     test("should return 'st' for 1", () => {
