@@ -1,6 +1,6 @@
 # Days calendar project
 
-This project dynamically generates a calendar displaying commemorative days that occur annually but on non-fixed dates (e.g., second Tuesday of October, third Monday of January). It reads a JSON file (`data.json`) containing the commemorative days and displays them on a calendar. Additionally, the project generates an `.ics` file in iCalendar format, which can be imported into Google Calendar.
+This project dynamically generates a calendar displaying commemorative days that occur annually but on non-fixed dates (e.g second Tuesday of October, third Saturday of September). It reads a JSON file (`days.json`) containing the commemorative days and displays them on a calendar. Additionally, the project generates an `.ics` file in iCalendar format, which can be imported into Google Calendar.
 
 The goal is to track these commemorative days across multiple years and provide a user-friendly way to visualize and interact with them.
 
@@ -14,32 +14,33 @@ The goal is to track these commemorative days across multiple years and provide 
 ## Technologies
 
 - **HTML**: Used for the structure and layout of the calendar.
+- **CSS**: Used CSS for styles.
 - **JavaScript**: Used for the logic, including generating the calendar, calculating commemorative days, and generating the `.ics` file.
-- **Node.js**: Utilized for generating the `.ics` file in iCalendar format.
+- **Node.js**: Utilized for generating the .ics. Used for Jest tests.
 - **JSON**: Stores the data for each commemorative day (name, description, occurrence, etc.).
 
-storage.
+
 
 - **Jest:** Used for unit testing to ensure the core functionality works as expected.
 
 ## Set up & Installation
-1. **Clone the repository** <br>``` git clone https://github.com/nadika-zavodovska/days-calendar-projectgit ```
+1. **Clone the repository** <br>``` git clone  https://github.com/nadika-zavodovska/days-calendar-project  ```
 2. **Navigate into the project folder (if needed)** <br>``` cd days-calendar-project``` 
 3. **Open index.html in your browser** <br>Ensure the project is served over HTTP for the module system to work. [Learn to serve over HTTP.](https://www.npmjs.com/package/http-server)
 
 ## Usage
 1. Interactive Calendar:
 
-1. Open the calendar in the browser to see the current month.
-2. Use the buttons to navigate to the previous or next month.
-3. Use the dropdowns to select a specific month and year.
-4. Use the input field to enter year in number.
-5. The commemorative days for each month will be displayed on the calendar.
+. Open the calendar in the browser to see the current month.
+. Use the buttons to navigate to the previous or next month.
+. Use the dropdowns to select a specific month and year.
+. Use the input field to enter year in number.
+. The commemorative days for each month wi  ll be displayed on the calendar.
 
 2. Generate iCalendar:
 
-1. Run the iCalendar generation script (node generate-ics.js) to create an .ics file.
-2. Import the .ics file into Google Calendar to view the commemorative days.
+. Run the iCalendar generation script (node generate-ics.js) to create an .ics file.
+. Import the .ics file into Google Calendar to view the commemorative days.
 
 ## Running the iCal Generator Script
 To generate the .ics file:
@@ -56,7 +57,7 @@ To generate the .ics file:
 
 ## Notes
 - This project focuses on the logic of calculating the nth occurrence of dates (e.g., second Tuesday of October) and dynamically generating the calendar.
-- Styling is minimal as the focus is on functionality, but added styles as needed.
+
 
 ## Contributions 
 <br>Contributions are welcome. If you find any bugs or want to improve the project, feel free to fork the repo, make your changes, and submit a pull request.
