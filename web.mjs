@@ -48,7 +48,7 @@ export function generateCalendar(daysData) {
 
   // Get the first day of the month (0 = Sunday, 1 = Monday, etc.)
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-  const totalDaysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); // Get the last date of the month
+  const totalDaysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const lastDayOfMonth = new Date(currentYear, currentMonth, totalDaysInMonth).getDay();
 
   // Adjust the first day so Monday is the start of the calendar (1 = Monday, 7 = Sunday)
