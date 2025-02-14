@@ -39,7 +39,6 @@ export function getCommemorativeDay(year, month, event) {
     } else {
         targetDayOfMonth = firstMatchingWeekday;
     }
-
     return targetDayOfMonth;
 }
 

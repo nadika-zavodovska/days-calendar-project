@@ -1,4 +1,4 @@
-import { getCommemorativeDay } from '../src/common.mjs';
+import { getCommemorativeDay } from '../common.mjs';
 
 describe("getCommemorativeDay function", () => {
     test("should return the correct day for Ada Lovelace Day when October 2024 is selected", () => {
