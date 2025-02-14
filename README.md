@@ -37,7 +37,7 @@ This project dynamically generates a calendar displaying commemorative days that
 **Generate .ics file which can be imported into Google Calendar:**
 
 - Ensure you have Node.js installed.
-- Run script to generate an .ics file.
+- Run script to generate an .ics file.<br>
 ```node generate-ics.js```.
 - Import the .ics file into Google Calendar to view the commemorative days.
 
@@ -48,4 +48,4 @@ This project dynamically generates a calendar displaying commemorative days that
 3. **Check the Test Results:** <br>The test results will be displayed in the terminal.
 
 ## Contributions 
-<br>Contributions are welcome. If you find any bugs or want to improve the project, feel free to fork the repo, make your changes, and submit a pull request.
+Contributions are welcome. If you find any bugs or want to improve the project, feel free to fork the repo, make your changes, and submit a pull request.
