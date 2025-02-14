@@ -40,10 +40,6 @@ a {
   align-items: center;
 }
 
-.calendar-container {
-  text-align: center;
-}
-
 #calendar-container {
   display: grid;
   grid-template-columns: repeat(7, minmax(50px, 1fr));
