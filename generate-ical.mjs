@@ -8,25 +8,39 @@ const getWeekdayIndex = (weekday) => {
 
 // Function to calculate the nth occurrence of a specific weekday in a given month
 const calculateOccurrenceDate = (month, weekday, occurrence, year) => {
-  const firstDayOfMonth = new Date(year, month, 1);
-  const firstDayWeekday = firstDayOfMonth.getDay();
+  const firstDayOfMonth = new Date(year, month, 1).getDay(); // Day of the week (0 = Sunday)
+  const weekdayIndex = getWeekdayIndex(weekday); // Get index (0 = Monday, 6 = Sunday)
 
-  // Find the first weekday in the month
-  let firstOccurrenceDay = (getWeekdayIndex(weekday) - firstDayWeekday + 7) % 7 + 1;
+  // Find the first occurrence of the given weekday in this month
+  let firstOccurrenceDay = 1 + ((7 + weekdayIndex - firstDayOfMonth) % 7);
 
-  // Calculate the nth occurrence
-  let date = firstOccurrenceDay + (occurrence === 'second' ? 7 : occurrence === 'third' ? 14 : occurrence === 'fourth' ? 21 : 0);
+  // Handle nth occurrences (second, third, fourth)
+  let offset = {
+    "first": 0,
+    "second": 7,
+    "third": 14,
+    "fourth": 21
+  };
 
-  // Handle last occurrence
-  if (occurrence === 'last') {
-    const daysInMonth = new Date(year, month + 1, 0).getDate(); // Get the number of days in the month
-    let lastDay = new Date(year, month, daysInMonth).getDay();
-    let daysToSubtract = (lastDay - getWeekdayIndex(weekday) + 7) % 7;
-    date = daysInMonth - daysToSubtract;
+  if (occurrence in offset) {
+    return new Date(year, month, firstOccurrenceDay + offset[occurrence]);
   }
 
-  return new Date(year, month, date);
+  // Handle last occurrence
+  if (occurrence === "last") {
+    let lastDay = new Date(year, month + 1, 0).getDate(); // Get last day of month
+    for (let i = lastDay; i > 0; i--) {
+      let day = new Date(year, month, i).getDay();
+      if (day === weekdayIndex) {
+        return new Date(year, month, i);
+      }
+    }
+  }
+
+  return null; // Fallback in case of an error
 };
+
+
 
 // Load the JSON file
 const rawData = fs.readFileSync('days.json', 'utf8');
@@ -53,14 +67,15 @@ function generateIcal(events) {
       }
 
       // Format the date to YYYYMMDDTHHmmssZ
-      const startDate = date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const startDate = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`;
+
 
       console.log(`Start date for ${name} in ${year}:`, startDate);
 
       // Add to iCal content
       ical += `BEGIN:VEVENT\n`;
       ical += `SUMMARY:${name} (${year})\n`;
-      ical += `DTSTART:${startDate}\n`;
+      ical += `DTSTART;VALUE=DATE:${startDate}\n`;
       ical += `DESCRIPTION:${descriptionURL}\n`;
       ical += `END:VEVENT\n`;
     });
