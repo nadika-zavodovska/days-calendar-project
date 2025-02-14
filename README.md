@@ -2,7 +2,7 @@
 
 This project dynamically generates a calendar displaying commemorative days that occur annually but on non-fixed dates (e.g second Tuesday of October, third Saturday of September). It reads a JSON file (`days.json`) containing the commemorative days and displays them on a calendar. Additionally, the project generates an `.ics` file in iCalendar format, which can be imported into Google Calendar.
 
-The goal is to track these commemorative days across multiple years and provide a user-friendly way to visualize and interact with them.
+**The goal** is to track these commemorative days across multiple years and provide a user-friendly way to visualize and interact with them.
 
 ## Features
 
