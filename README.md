@@ -26,7 +26,7 @@ This project dynamically generates a calendar displaying commemorative days that
 3. **Open index.html in your browser** <br>Ensure the project is served over HTTP for the module system to work. [Learn to serve over HTTP.](https://www.npmjs.com/package/http-server)
 
 ## Usage
-**1. Interactive Calendar:**
+**Interactive Calendar:**
 
 - Open the calendar in the browser to see the current month.
 - Use the dropdowns to select a specific month.
@@ -34,29 +34,18 @@ This project dynamically generates a calendar displaying commemorative days that
 - Use the buttons to navigate to the previous or next month.
 - The commemorative days for each month will be displayed on the calendar.
 
-**2. Generate .ics file which can be imported into Google Calendar:**
+**Generate .ics file which can be imported into Google Calendar:**
 
 - Ensure you have Node.js installed.
 - Run script to generate an .ics file.
 ```node generate-ics.js```.
 - Import the .ics file into Google Calendar to view the commemorative days.
 
-## Running the iCal Generator Script
-To generate the .ics file:
-1. 
-2. Run the iCalendar generator script:
-3. node generate-ics.js
-4. The script will generate a file named commemorative-days.ics which can be imported into Google Calendar.
-
 ## Running tests
 #### Make sure you have **Node.js** and **npm** installed before running the tests.
-1. **Install dependencies:** <br>``` npm install ```
-2. **Run Unit Tests:** <br>``` npm test ```<br>This will run the tests using [Jest](https://jestjs.io).
+1. **Install dependencies:** <br>```npm install```
+2. **Run Unit Tests:** <br>```npm test```<br>This will run the tests using [Jest](https://jestjs.io).
 3. **Check the Test Results:** <br>The test results will be displayed in the terminal.
-
-## Notes
-- This project focuses on the logic of calculating the nth occurrence of dates (e.g., second Tuesday of October) and dynamically generating the calendar.
-
 
 ## Contributions 
 <br>Contributions are welcome. If you find any bugs or want to improve the project, feel free to fork the repo, make your changes, and submit a pull request.
